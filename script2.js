@@ -1,4 +1,3 @@
-// Global variables
 var currentTheme = 'light';
 var savedMessages = [];
 
@@ -27,6 +26,14 @@ function applyTheme() {
         body.classList.remove('dark-theme');
     }
 }
+VANTA.CLOUDS({
+  el: "#vanta-bg",
+  mouseControls: true,
+  touchControls: true,
+  gyroControls: false,
+  minHeight: 200.00,
+  minWidth: 200.00
+});
 
 function showSection(sectionName) {
     // Hide all sections first
@@ -44,7 +51,6 @@ function showSection(sectionName) {
         navLinks[i].classList.remove('active');
     }
     
-    // Add active class to the clicked link
     var activeLink = document.querySelector('[onclick="showSection(\'' + sectionName + '\')"]');
     if (activeLink) {
         activeLink.classList.add('active');
@@ -97,7 +103,6 @@ function setupFormValidation() {
     var emailInput = document.getElementById('email');
     var messageInput = document.getElementById('message');
     
-    // Name validation
     nameInput.addEventListener('input', function() {
         var error = validateName(this.value);
         var errorElement = document.getElementById('name-error');
@@ -254,10 +259,13 @@ function getClothingRecommendation(temperature) {
         return "Wear a warm jacket.";
     } else if (temperature >= 15 && temperature < 25) {
         return "Light jacket or sweater.";
-    } else {
-        return "T-shirt and shorts.";
+    } 
+    else{
+        return "Wear Light Clothes"
     }
-}
+
+    }
+
 function updateWeatherDisplay(data) {
     var city = data.name;
     var temperature = data.main.temp;
@@ -336,5 +344,4 @@ function initializeWebsite() {
     showSection('home');
 }
 
-// Start the website when the page is fully loaded
 document.addEventListener('DOMContentLoaded', initializeWebsite);
